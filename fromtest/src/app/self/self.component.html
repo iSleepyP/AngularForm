@@ -1,0 +1,82 @@
+<button (click)="onHomePage()" >Home</button>
+<h3>Self Solution</h3>
+<div class="container">
+    <div class="row">
+<form (ngSubmit)="onSubmit()" #d="ngForm">
+    <div
+    id="user-Test" 
+    ngModelGroup="userTest"
+    #userTest="ngModelGroup">
+    <div class="form-group">
+    <label for="name1">Name : </label>
+    <input 
+    id="name1" 
+    type="text"
+    [ngModel]="namee"
+    name="namee"
+    required
+    >
+   </div>
+    <br>
+    <div class="form-group">
+    <label for="email1">Email : </label>
+    <input 
+    id="email1" 
+    type="email"
+    [ngModel]="emaill"
+    email
+    name="emaill"
+    required>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="pass">Password : </label>
+        <input 
+        id="pass" 
+        type="password"
+        [ngModel]="password"
+        password
+        name="password"
+        required>
+        </div>
+        
+        <br>
+        <div class="helpbox" *ngIf="!userTest.valid&&userTest.touched"><span>required data!!!</span></div>
+ </div>
+    <br>
+    <div class="form-group">
+        <label for="secret">Secret Questions : </label>
+        <select id="secret" class="form-control"
+                        [ngModel]="defaultSelect" name="secrett">
+          <option value="Basics">Select Basic?</option>
+          <option value="Advance">Select Advance?</option>
+          <option value="Pro">Select Pro?</option>
+        </select>
+      </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="check" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Confirm
+        </label>
+      </div>
+      <br>
+    <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!d.valid&&!check">Submit</button>
+    </div>
+</form>
+    </div>
+    <div class="row" *ngIf="submitt; else nondata">
+        <p>Data : </p>
+        <p>Name : {{user.name}}</p>
+        <p>Email :{{user.email}} </p>
+        <p>Pass : {{user.password}}</p>
+        <p>Type : {{user.select}} </p>
+        <p>confirm : {{user.checkk}}</p>
+        
+    </div>
+    <ng-template #nondata>
+        no data!
+    </ng-template>
+    
+</div>
